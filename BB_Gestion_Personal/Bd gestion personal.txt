@@ -1,0 +1,45 @@
+Create database gestion_personal;
+use gestion_personal;
+
+create table Resgitro(
+ID_Registro int auto_increment primary key,
+Fecha_Ingreso date,
+Fecha_Salida date, 
+ID_Documento int,
+foreign key(ID_Documento) references Personal(ID_Personal)
+);
+
+create table Personal(
+ID_Documento int primary key,
+Nombre varchar(255),
+Apellido varchar(255),
+Tipo_de_Identificacion varchar(50),
+Numero_Documento varchar(50),
+Direccion varcharacter(255),
+Correo_Electronico varcharacter(255), 
+Telefono varchar(20)
+);
+
+create table Consulta (
+    ID_Consulta int auto_increment primary key,
+    ID_Documento int,
+    Tipo_Consulta varchar(255),
+    Detalles varchar(1000),
+    foreign key (ID_Documento) references Personal(ID_Personal)
+);
+
+create table Modificacion_Datos (
+    ID_Modificacion int auto_increment primary key,
+    ID_Documento int,
+    Tipo_Modificacion varchar(255),
+    Detalles_Modificacion varchar(1000),
+    foreign key (ID_Documento) references Personal(ID_Personal)
+);
+
+Create table Control_Administrativo (
+    ID_Control int auto_increment primary key,
+    ID_Documento int,
+    Tipo_Control varchar(255),
+    Detalles_Control varchar(1000),
+    foreign key (ID_Documento) references Personal(ID_Personal)
+);
